@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  front_word: MyString
+  back_definition: MyString
+  back_notes: MyText
+  understanding: false
+  understanding_num: 1
+
+two:
+  front_word: MyString
+  back_definition: MyString
+  back_notes: MyText
+  understanding: false
+  understanding_num: 1
