@@ -9,5 +9,10 @@ class UsersController < ApplicationController
         render json: user, include: [:decks]
     end
 
+    def login
+        user = User.find_by(username: params[:username])
+        render json: user, include: [:decks]
+    end
+
 
 end
