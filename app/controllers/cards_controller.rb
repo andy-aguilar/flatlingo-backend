@@ -3,4 +3,15 @@ class CardsController < ApplicationController
         cards = Card.all
         render json: cards
     end
+
+    def create
+        card = Card.create(card_params)
+        render json: card
+    end 
+
+    private 
+    
+    def card_params 
+        params.require(:card).permit(:front_word, :back_definition, :back_notes, :understanding, :understanding_num, :deck_id)
+    end 
 end
