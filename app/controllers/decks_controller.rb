@@ -14,6 +14,13 @@ class DecksController < ApplicationController
         render json: deck
     end
 
+    def destroy
+        deck= Deck.find(params[:id])
+        deck.destroy
+
+        render json: {}
+    end
+
     private
     def deck_params
         params.require(:deck).permit(:name, :user_id)
