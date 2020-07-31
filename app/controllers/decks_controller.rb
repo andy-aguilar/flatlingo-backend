@@ -10,13 +10,17 @@ class DecksController < ApplicationController
     end
 
     def create
-        deck = Deck.create(deck_params)
+        deck = Deck.new(deck_params)
+        user = User.find(params[:user_id])
+        if deck.save
+            user.decks << deck
+        end
         render json: deck
     end
 
-    def destroy
+    def update
         deck= Deck.find(params[:id])
-        deck.destroy
+        deck.users.delete(User.find(params[:user_id]))
 
         render json: {}
     end

@@ -14,15 +14,20 @@ flatiron = User.create(username: "Flatiron")
 
 andy = User.create(username: "Andy")
 
-beer = Deck.create(name: "Beer", user_id: flatiron.id)
+beer = Deck.create(name: "Beer")
+
+flatiron.decks << beer
+andy.decks << beer
 
 10.times do 
-    Card.create(front_word: Faker::Beer.brand, back_definition: Faker::Beer.name, back_notes: Faker::Beer.style, understanding: false, understanding_num: 0, deck_id: beer.id)
+    card = Card.create(front_word: Faker::Beer.brand, back_definition: Faker::Beer.name, back_notes: Faker::Beer.style, understanding: false, understanding_num: 0)
+    beer.cards << card
 end
 
-ruby = Deck.create(name: "Ruby", user_id: andy.id)
+ruby = Deck.create(name: "Ruby")
+andy.decks << ruby
 
-Card.create(front_word: "Array", back_definition: "An array is a Ruby data type that holds an ordered collection of values, which can be any type of object including other arrays.", 
+ruby.cards << Card.create(front_word: "Array", back_definition: "An array is a Ruby data type that holds an ordered collection of values, which can be any type of object including other arrays.", 
     back_notes: 'Ruby arrays can be created with either literal notation or the Array.new constructor.<br>
     <strong>Syntax:</strong><br>
     empty_arr = Array.new<br>
@@ -33,9 +38,9 @@ Card.create(front_word: "Array", back_definition: "An array is a Ruby data type 
     
     # Array literal notation<br>
     variable = []<br>
-    other_variable = [item1, item2, ..., itemN]', understanding: false, understanding_num: 0, deck_id: ruby.id)
+    other_variable = [item1, item2, ..., itemN]', understanding: false, understanding_num: 0)
 
-Card.create(front_word: "Array.Each", back_definition: "You can iterate over the elements in an array using Array.each, which takes a block.", 
+ruby.cards << Card.create(front_word: "Array.Each", back_definition: "You can iterate over the elements in an array using Array.each, which takes a block.", 
         back_notes: 'Ruby arrays can be created with either literal notation or the Array.new constructor.<br>
         <strong>Syntax:</strong><br>
         array.each do |arg|<br>
@@ -46,9 +51,9 @@ Card.create(front_word: "Array.Each", back_definition: "You can iterate over the
         
         array.each { |arg|<br>
             # Do something to each element, referenced as arg<br>
-        }', understanding: false, understanding_num: 0, deck_id: ruby.id)
+        }', understanding: false, understanding_num: 0)
 
-Card.create(front_word: "Blocks", back_definition: "A block is a chunk of code that lives inside a control statement, loop, method definition, or method call. It returns the value of its last line. In Ruby, blocks can be created two ways: with braces or with a do/end statement.", 
+ruby.cards << Card.create(front_word: "Blocks", back_definition: "A block is a chunk of code that lives inside a control statement, loop, method definition, or method call. It returns the value of its last line. In Ruby, blocks can be created two ways: with braces or with a do/end statement.", 
     back_notes: 'Ruby arrays can be created with either literal notation or the Array.new constructor.<br>
     <strong>Syntax:</strong><br>
     # Blocks that span only one line usually use the braces form<br>
@@ -59,15 +64,14 @@ Card.create(front_word: "Blocks", back_definition: "A block is a chunk of code t
             # do second line<br>
             # ...<br>
             # do nth line<br>
-        end<br>', understanding: false, understanding_num: 0, deck_id: ruby.id)
+        end<br>', understanding: false, understanding_num: 0)
 
 
-Card.create(front_word: "Booleans", back_definition: "In Ruby, there are two boolean values: true and false.", 
+ruby.cards << Card.create(front_word: "Booleans", back_definition: "In Ruby, there are two boolean values: true and false.", 
     understanding: false, 
-    understanding_num: 0, 
-    deck_id: ruby.id)
+    understanding_num: 0)
 
-Card.create(front_word: "Logical Operators", 
+ruby.cards << Card.create(front_word: "Logical Operators", 
     back_definition: "Logical operators are used to compare to boolean values. Ruby has 6 operators to compare boolean values: and, or, not, &&, ||, and not. and and &&, or and ||, and not and ! have the same functionality but the verbiage operators (and, or and not) have lower precedence than the symbolic operators (&&, || and !).", 
     back_notes: '<strong>Syntax:</strong><br>
     // returns true if both boolean1 and boolean2 are true<br>
@@ -82,10 +86,9 @@ Card.create(front_word: "Logical Operators",
     !boolean<br>
     not boolean', 
     understanding: false, 
-    understanding_num: 0, 
-    deck_id: ruby.id)
+    understanding_num: 0)
 
-Card.create(front_word: "Comparison operators", 
+ruby.cards << Card.create(front_word: "Comparison operators", 
         back_definition: "Comparison operators are used to test the relationship between two objects. The equality (==) and inequality (!=) operators can be used on almost any type of value where the other operators are used for numeric comparisons.", 
         back_notes: '<strong>Syntax:</strong><br>
         x == y // returns true if two things are equal<br>
@@ -95,25 +98,22 @@ Card.create(front_word: "Comparison operators",
         x < y // returns true if x is less than y<br>
         x > y // returns true if x is greater than y', 
         understanding: false, 
-        understanding_num: 0, 
-        deck_id: ruby.id)
+        understanding_num: 0)
 
-Card.create(front_word: "Comments", 
+ruby.cards << Card.create(front_word: "Comments", 
         back_definition: "Adding human-readable comments to your programs is a good idea to help others who read your code understand what it does. However in Ruby, it is common to not write many comments, since the language is so human-readable already. It’s usually very easy to quickly understand what a good piece of Ruby code does.", 
         back_notes: '<strong>Syntax:</strong><br>
         # comment text', 
         understanding: false, 
-        understanding_num: 0, 
-        deck_id: ruby.id)
+        understanding_num: 0)
 
-Card.create(front_word: "Hashes", 
+ruby.cards << Card.create(front_word: "Hashes", 
     back_definition: "Hashes are collections of key-value pairs. Like arrays, they have values associated with indices, but in the case of hashes, the indices are called “keys.” Keys can be anything that’s hashable, such as integers, strings, or symbols, but they must be unique for the hash they belong. The values to which keys refer can be any Ruby object.", 
     back_notes: "", 
     understanding: false, 
-    understanding_num: 0, 
-    deck_id: ruby.id) 
+    understanding_num: 0) 
 
-Card.create(front_word: "Creating Sandard Hashes", 
+ruby.cards << Card.create(front_word: "Creating Sandard Hashes", 
     back_definition: "There are several ways to create hashes in Ruby. The common most two are the new constructor method and its literal notation. It is also considered a best practice to use symbols as keys. The following are valid in all versions of Ruby.", 
     back_notes: "<strong>Syntax:</strong><br>
     my_hash = Hash.new([default_value])<br><br>
@@ -130,8 +130,7 @@ Card.create(front_word: "Creating Sandard Hashes",
         key2: value2<br>
     }<br>", 
     understanding: false, 
-    understanding_num: 0, 
-    deck_id: ruby.id) 
+    understanding_num: 0) 
 
 
 
