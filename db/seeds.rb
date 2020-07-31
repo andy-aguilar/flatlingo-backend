@@ -12,13 +12,15 @@ User.destroy_all
 
 flatiron = User.create(username: "Flatiron")
 
+andy = User.create(username: "Andy")
+
 beer = Deck.create(name: "Beer", user_id: flatiron.id)
 
 10.times do 
     Card.create(front_word: Faker::Beer.brand, back_definition: Faker::Beer.name, back_notes: Faker::Beer.style, understanding: false, understanding_num: 0, deck_id: beer.id)
 end
 
-ruby = Deck.create(name: "Ruby", user_id: flatiron.id)
+ruby = Deck.create(name: "Ruby", user_id: andy.id)
 
 Card.create(front_word: "Array", back_definition: "An array is a Ruby data type that holds an ordered collection of values, which can be any type of object including other arrays.", 
     back_notes: 'Ruby arrays can be created with either literal notation or the Array.new constructor.<br>
@@ -95,21 +97,45 @@ Card.create(front_word: "Comparison operators",
         understanding: false, 
         understanding_num: 0, 
         deck_id: ruby.id)
-Card.create(front_word: "Comparison operators", 
-        back_definition: "Comparison operators are used to test the relationship between two objects. The equality (==) and inequality (!=) operators can be used on almost any type of value where the other operators are used for numeric comparisons.", 
+
+Card.create(front_word: "Comments", 
+        back_definition: "Adding human-readable comments to your programs is a good idea to help others who read your code understand what it does. However in Ruby, it is common to not write many comments, since the language is so human-readable already. It’s usually very easy to quickly understand what a good piece of Ruby code does.", 
         back_notes: '<strong>Syntax:</strong><br>
-        x == y // returns true if two things are equal<br>
-        x != y // returns true if two things are not equal<br>
-        x <= y // returns true if x is less than or equal to y<br>
-        x >= y // returns true if x is greater than or equal to y<br>
-        x < y // returns true if x is less than y<br>
-        x > y // returns true if x is greater than y', 
+        # comment text', 
         understanding: false, 
         understanding_num: 0, 
         deck_id: ruby.id)
-    
+
+Card.create(front_word: "Hashes", 
+    back_definition: "Hashes are collections of key-value pairs. Like arrays, they have values associated with indices, but in the case of hashes, the indices are called “keys.” Keys can be anything that’s hashable, such as integers, strings, or symbols, but they must be unique for the hash they belong. The values to which keys refer can be any Ruby object.", 
+    back_notes: "", 
+    understanding: false, 
+    understanding_num: 0, 
+    deck_id: ruby.id) 
+
+Card.create(front_word: "Creating Sandard Hashes", 
+    back_definition: "There are several ways to create hashes in Ruby. The common most two are the new constructor method and its literal notation. It is also considered a best practice to use symbols as keys. The following are valid in all versions of Ruby.", 
+    back_notes: "<strong>Syntax:</strong><br>
+    my_hash = Hash.new([default_value])<br><br>
+    OR<br><br>
+    my_hash = {<br>
+    'key1' => value1,<br>
+    :key2  => value2,<br>
+    3 => value 3<br>
+    }<br><br>
+
+    OR<br><br>
+    my_hash = {<br>
+        key1: value1,<br>
+        key2: value2<br>
+    }<br>", 
+    understanding: false, 
+    understanding_num: 0, 
+    deck_id: ruby.id) 
 
 
 
+
+puts "NICE JOB SEEDING"
 
 
