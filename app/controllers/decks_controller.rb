@@ -6,7 +6,7 @@ class DecksController < ApplicationController
     end
 
     def show
-        render json: deck, include: [:cards]
+        render json: @deck, include: [:cards]
     end
 
     def create
@@ -19,12 +19,12 @@ class DecksController < ApplicationController
     end
 
     def update
-        deck.users.delete(User.find(params[:user_id]))
+        @deck.users.delete(User.find(params[:user_id]))
         render json: {}
     end
 
     def destroy
-        deck.destroy
+        @deck.destroy
         render json: {}
     end
 
@@ -34,7 +34,7 @@ class DecksController < ApplicationController
     end
 
     def find_deck
-        deck = Deck.find(params[:id])
+        @deck = Deck.find(params[:id])
     end
 
 

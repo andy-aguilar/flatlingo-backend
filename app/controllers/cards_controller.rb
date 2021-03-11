@@ -6,16 +6,16 @@ class CardsController < ApplicationController
     end 
 
     def edit 
-        render json: card
+        render json: @card
     end 
 
     def update
         card.update(card_params)
-        render json: card
+        render json: @card
     end 
 
     def destroy
-        card.destroy
+        @card.destroy
         render json: {}
     end
 
@@ -26,6 +26,6 @@ class CardsController < ApplicationController
     end 
 
     def find_card
-        card = Card.find(params[:id])
+        @card = Card.find(params[:id])
     end
 end
