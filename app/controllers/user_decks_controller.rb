@@ -2,7 +2,6 @@ class UserDecksController < ApplicationController
 
     def create
         user_deck = UserDeck.create(userdeck_params)
-
         render json: {message: "Your Deck has been successfully shared!"}
     end
 
