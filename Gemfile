@@ -47,3 +47,5 @@ gem 'faker'
 gem "jwt", "~> 2.2"
 
 gem "active_model_serializers", "~> 0.10.12"
+
+gem "email_validator", "~> 2.2"
